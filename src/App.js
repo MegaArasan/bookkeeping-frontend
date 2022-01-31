@@ -18,8 +18,8 @@ import { Invoices } from "./components/Invoices/Invoices.js";
 import { EditInvoice } from "./components/Invoices/EditInvoice.js";
 import { Settings } from "./components/Settings/Settings.js";
 import { Dashboard } from "./components/Dashboard/Dashboard.js";
-import CircularProgress from '@mui/material/CircularProgress';
-import {Typography} from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Typography } from "@mui/material";
 
 export default function App() {
   return (
@@ -116,7 +116,9 @@ function Updatepassword({ id }) {
   return (
     <div className="loader-container">
       <CircularProgress color="success" />
-      <Typography sx={{fontFamily:"Aladin"}} variant="h6">Please Wait......</Typography>
+      <Typography sx={{ fontFamily: "Aladin" }} variant="h6">
+        Please Wait......
+      </Typography>
     </div>
   );
 }
