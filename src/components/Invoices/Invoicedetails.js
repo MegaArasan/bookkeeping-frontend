@@ -93,6 +93,7 @@ function InvoiceDetails({
   const [loading, setLoading] = useState(false);
   // const [downloadStatus, setDownloadStatus] = useState(null);
   const [open, setOpen] = useState(false);
+  // eslint-disable-next-line
   const [opened, setopened] = useState(false);
   // console.log(id);
   // const userName = localStorage.getItem("Username");
