@@ -41,7 +41,7 @@ export function EditInvoice() {
     })
       .then((data) => data.json())
       .then((invoice) => {
-        console.log(invoice);
+        // console.log(invoice);
         setInvoiceData(invoice);
       });
   }, [id]);
@@ -191,7 +191,7 @@ function Editinvoice({ invoiceData, setInvoiceData, customers, user, id }) {
       status: status,
       creator: user,
     };
-    console.log(data);
+    // console.log(data);
     fetch(`${API_URL}/invoices/updateinvoice/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),

@@ -35,7 +35,7 @@ export function Signup() {
       },
       validationSchema: formvalidationSchema,
       onSubmit: (newUser) => {
-        console.log(newUser);
+        // console.log(newUser);
         addUser(newUser);
       },
     });

@@ -30,7 +30,7 @@ export function ResetPassword() {
       },
       validationSchema: formvalidationSchema,
       onSubmit: (updatepass) => {
-        console.log(updatepass);
+        // console.log(updatepass);
         user(updatepass);
       },
     });

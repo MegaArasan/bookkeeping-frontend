@@ -51,7 +51,7 @@ function UpdateUser({ User, setUser }) {
       },
       validationSchema: formvalidationSchema,
       onSubmit: (user) => {
-        console.log(user);
+        // console.log(user);
         Updateuser(user);
       },
     });
@@ -182,62 +182,62 @@ function UpdateUser({ User, setUser }) {
           )}
           {switchEdit === 0 && (
             <Grid container justifyContent="center">
-            <Card
-              sx={{
-                maxWidth: "350px",
-                width:"100%",
-              }}
-            >
-              <Paper elevation={2}>
-                <Grid container justifyContent="center">
-                  <Avatar
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      margin: "30px",
-                    }}
-                    src={User.logo}
-                    alt="avatar"
-                  />
-                </Grid>
-                <Grid
-                  container
-                  justifyContent="center"
-                  alignItems="center"
-                  direction="column"
-                >
-                  <Grid ite>
-                    <b>User Name:</b>
-                    <Typography variant="p">{User.Username}</Typography>
+              <Card
+                sx={{
+                  maxWidth: "350px",
+                  width: "100%",
+                }}
+              >
+                <Paper elevation={2}>
+                  <Grid container justifyContent="center">
+                    <Avatar
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        margin: "30px",
+                      }}
+                      src={User.logo}
+                      alt="avatar"
+                    />
                   </Grid>
-                  <Grid item>
-                    <b>Business Name:</b>
-                    <Typography variant="p">{User.businessName}</Typography>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    direction="column"
+                  >
+                    <Grid ite>
+                      <b>User Name:</b>
+                      <Typography variant="p">{User.Username}</Typography>
+                    </Grid>
+                    <Grid item>
+                      <b>Business Name:</b>
+                      <Typography variant="p">{User.businessName}</Typography>
+                    </Grid>
+                    <Grid item>
+                      <b>Address:</b>
+                      <Typography variant="p">{User.contactAddress}</Typography>
+                    </Grid>
+                    <Grid item>
+                      <b>Phone No:</b>
+                      <Typography variant="p">{User.phoneno}</Typography>
+                    </Grid>
+                    <Grid item>
+                      <b>Email:</b>
+                      <Typography variant="p">{User.email}</Typography>
+                    </Grid>
+                    <Grid item>
+                      <Button
+                        variant="contained"
+                        style={{ margin: "30px", padding: "15px 30px" }}
+                        onClick={() => setSwitchEdit(1)}
+                      >
+                        Edit Profile
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <b>Address:</b>
-                    <Typography variant="p">{User.contactAddress}</Typography>
-                  </Grid>
-                  <Grid item>
-                    <b>Phone No:</b>
-                    <Typography variant="p">{User.phoneno}</Typography>
-                  </Grid>
-                  <Grid item>
-                    <b>Email:</b>
-                    <Typography variant="p">{User.email}</Typography>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      variant="contained"
-                      style={{ margin: "30px", padding: "15px 30px" }}
-                      onClick={() => setSwitchEdit(1)}
-                    >
-                      Edit Profile
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Paper>
-            </Card>
+                </Paper>
+              </Card>
             </Grid>
           )}
         </section>

@@ -79,7 +79,7 @@ const Modal = ({ setMsg, setOpen, open, invoiceData, id }) => {
 
   const handleSubmitPayment = (e) => {
     e.preventDefault();
-    console.log(updatedInvoice);
+    // console.log(updatedInvoice);
     fetch(`${API_URL}/invoices/updateinvoice/${id}`, {
       method: "PUT",
       body: JSON.stringify(updatedInvoice),

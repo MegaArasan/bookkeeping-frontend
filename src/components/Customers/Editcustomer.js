@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 export function Editcustomer() {
   const [customer, setcustomer] = useState("");
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   useEffect(() => {
     fetch(`${API_URL}/usercustomer/${id}`, { method: "GET" })
       .then((data) => data.json())
@@ -41,7 +41,7 @@ function EditCustomer({ customer, id }) {
       },
       validationSchema: formvalidationSchema,
       onSubmit: (customer) => {
-        console.log(customer);
+        // console.log(customer);
         updatecustomer(customer);
       },
     });

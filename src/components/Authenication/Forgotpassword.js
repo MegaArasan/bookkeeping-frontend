@@ -26,7 +26,7 @@ export function ForgotPassword() {
       },
       validationSchema: formvalidationSchema,
       onSubmit: (email) => {
-        console.log(email);
+        // console.log(email);
         forgotpass(email);
       },
     });

@@ -188,7 +188,7 @@ function InvoicesList({ rows }) {
       : "red";
   }
   const deleteInvoice = (id) => {
-    console.log(id);
+    // console.log(id);
     fetch(`${API_URL}/invoices/delete/${id}`, {
       method: "DELETE",
     })
