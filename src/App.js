@@ -114,7 +114,15 @@ function Updatepassword({ id }) {
 
   // Loading Page
   return (
-    <div className="loader-container">
+    <div
+      className="loader-container"
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignContent: "center",
+        justifyContent: "center",
+      }}
+    >
       <CircularProgress color="success" />
       <Typography sx={{ fontFamily: "Aladin" }} variant="h6">
         Please Wait......
