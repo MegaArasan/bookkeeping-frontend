@@ -122,6 +122,7 @@ function Updatepassword({ id }) {
         flexDirection: "column",
         alignContent: "center",
         justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <CircularProgress color="success" />
