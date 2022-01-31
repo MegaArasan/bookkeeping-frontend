@@ -116,7 +116,7 @@ function Updatepassword({ id }) {
   return (
     <div className="loader-container">
       <CircularProgress color="success" />
-      <Typography variant="h6">Please Wait......</Typography>
+      <Typography sx={{fontFamily:"Aladin"}} variant="h6">Please Wait......</Typography>
     </div>
   );
 }
