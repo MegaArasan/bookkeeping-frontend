@@ -1,38 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Roboto+Condensed&family=The+Nautigal:wght@700&family=Poppins:wght@300&family=Yellowtail&display=swap");
+
 .App {
+  height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #c2d8f9,
+    #ace1f6,
+    #a7e7e5,
+    #b9eace,
+    #d9e7ba
+  );
+}
+.logo {
+  max-width: 70px;
+}
+.companylogo {
+  max-width: 100px;
+}
+.logo1 {
+  max-width: 35px;
+  display: none;
+}
+.signuppage,
+.loginpage,
+.forgotpage,
+.resetpage {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.formcontainer {
+  background: rgba(240, 242, 247, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(14.5px);
+  -webkit-backdrop-filter: blur(14.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: 320px;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #fff;
+}
+.addcustomer {
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logos {
+  max-width: 100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page {
+  width: 90%;
+  min-height: 500px;
+  background-color: #fff;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+}
+form {
+  padding: 0 40px 40px 40px !important;
+}
+
+/* TABLE STYLING */
+table {
+  font-family: Roboto, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 680px;
+}
+
+table td,
+table th {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0px;
+  border: none;
+  outline: none;
+}
+
+table tr:nth-child(even) {
+  background-color: #f5dcdc;
+}
+
+table tr:hover {
+  background-color: rgb(243, 243, 243);
+}
+
+thead {
+  padding-left: 100px;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f5f5f5;
+  color: rgb(59, 59, 59);
+  border-top: 1px rgb(212, 212, 212) solid;
+  border-bottom: 1px rgb(212, 212, 212) solid;
+  font-size: 14px;
+}
+.invoiceSummary div {
+  border-bottom: 1px solid rgb(231, 231, 231);
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
+  margin-left: 50%;
+  font-size: 15px;
   display: flex;
-  flex-direction: column;
+  color: gray;
+}
+
+.summary {
+  background-color: rgb(247, 247, 247);
+  font-weight: 500;
+  padding: 15px 0px;
+  padding-left: 15px;
+}
+
+.summaryItem {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.summaryItem {
+  padding: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.summaryItem input {
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  text-align: right;
+}
+.note {
+  margin-top: 20px;
+}
+textarea {
+  width: 100%;
+  height: 100px;
+  outline: none;
+  border: none;
+  font-family: "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  resize: none;
+}
+.pageContainer {
+  /* padding-left: 150px; */
+  background-color: #eeeeee;
+  padding-bottom: 96px;
+  min-height: 70%;
+  min-height: -webkit-calc(100% - 186px);
+  min-height: -moz-calc(100% - 186px);
+  min-height: calc(100% - 186px);
+}
+.hero {
+  width: 50%;
+  margin: 0px auto;
+  padding: 25px;
+  line-height: 60px;
+}
+.paragraph {
+  margin-top: 20px;
+  text-align: center;
+  line-height: 20px;
+  color: gray;
+}
+.amountcard {
+  margin-top: 10px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(900px, 1fr 1fr 1fr 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 420px) {
+  .signuppage {
+    height: 100%;
   }
-  to {
-    transform: rotate(360deg);
+  .formcontainer {
+    padding: 2px;
+  }
+}
+@media (max-width: 599px) {
+  .logo1 {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  .page {
+    width: 97%;
+  }
+  .invoiceSummary div {
+    margin-left: 0%;
   }
 }
