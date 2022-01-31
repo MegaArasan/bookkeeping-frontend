@@ -118,7 +118,8 @@ function Updatepassword({ id }) {
       className="loader-container"
       style={{
         display: "flex",
-        flexDirection: "row",
+        height: "100vh",
+        flexDirection: "column",
         alignContent: "center",
         justifyContent: "center",
       }}
