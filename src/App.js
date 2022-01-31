@@ -18,6 +18,8 @@ import { Invoices } from "./components/Invoices/Invoices.js";
 import { EditInvoice } from "./components/Invoices/EditInvoice.js";
 import { Settings } from "./components/Settings/Settings.js";
 import { Dashboard } from "./components/Dashboard/Dashboard.js";
+import CircularProgress from '@mui/material/CircularProgress';
+import {Typography} from "@mui/material";
 
 export default function App() {
   return (
@@ -113,13 +115,8 @@ function Updatepassword({ id }) {
   // Loading Page
   return (
     <div className="loader-container">
-      <div className="box-loader">
-        <img
-          src="https://c.tenor.com/28DFFVtvNqYAAAAC/loading.gif"
-          alt="loading"
-          className="Loading"
-        />
-      </div>
+      <CircularProgress color="success" />
+      <Typography variant="h6">Please Wait......</Typography>
     </div>
   );
 }
