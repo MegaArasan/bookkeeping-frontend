@@ -108,21 +108,21 @@ export function Invoices() {
   const [rows, setrows] = React.useState();
   const history = useHistory();
   const username = localStorage.getItem("Username");
+  const id=localStorage.getItem("token");
 
   // console.log(username);
   const getinvoices = () => {
     fetch(`${API_URL}/invoices/getall`, {
       method: "GET",
+      headers: { "x-auth-token": id },
     })
       .then((data) => data.json())
       .then((invoices) => {
-        // console.log(invoices);
-        invoices.map((data) => {
-          return data.creator.Username === username ? setrows(invoices) : "";
+        console.log(invoices);
+        setrows(invoices);
         });
-      });
   };
-  React.useEffect(getinvoices, [username]);
+  React.useEffect(getinvoices, [id]);
   if (!username) {
     history.push("/");
   }

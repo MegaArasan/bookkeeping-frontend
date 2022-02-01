@@ -26,7 +26,7 @@ import { initialState, toCommas } from "../../initialState.js";
 
 export function Addinvoice() {
   const history = useHistory();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = localStorage.getItem("Username");
   const [invoiceData, setInvoiceData] = useState(initialState);
   const [customers, setcustomers] = useState("");
   const [customer, setcustomer] = useState("");

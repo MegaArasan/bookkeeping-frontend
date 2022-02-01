@@ -27,22 +27,20 @@ export function Dashboard() {
   const history = useHistory();
   const [invoices, setInvoices] = useState();
   const username = localStorage.getItem("Username");
+  const id = localStorage.getItem("token");
 
   const getinvoices = () => {
     fetch(`${API_URL}/invoices/getall`, {
       method: "GET",
+      headers: { "x-auth-token": id },
     })
       .then((data) => data.json())
       .then((invoices) => {
-        // console.log(invoices);
-        invoices.map((data) => {
-          return data.creator.Username === username
-            ? setInvoices(invoices)
-            : "";
-        });
+        console.log(invoices);
+        setInvoices(invoices);
       });
   };
-  useEffect(getinvoices, [username]);
+  useEffect(getinvoices, [id]);
 
   if (!username) {
     history.push("/login");

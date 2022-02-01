@@ -144,6 +144,7 @@ function InvoiceDetails({
       )
       .then((res) => res.blob())
       .then((myblob) => {
+        console.log(myblob);
         const pdfBlob = new Blob([myblob.data], { type: "application/pdf" });
         saveAs(pdfBlob, "Invoice.pdf");
       })
