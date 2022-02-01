@@ -54,7 +54,7 @@ export function Invoicedetails() {
         setCurrency(invoice.currency);
         setSubTotal(invoice.subTotal);
         setTotal(invoice.total);
-        setCompany(invoice.creator);
+        setCompany(invoice.company);
       });
   }, [id]);
 
@@ -144,7 +144,7 @@ function InvoiceDetails({
       )
       .then((res) => res.blob())
       .then((myblob) => {
-        console.log(myblob);
+        // console.log(myblob);
         const pdfBlob = new Blob([myblob.data], { type: "application/pdf" });
         saveAs(pdfBlob, "Invoice.pdf");
       })
@@ -335,7 +335,7 @@ function InvoiceDetails({
               style={{ marginTop: "40px" }}
             >
               <Grid item>
-                {invoiceData.creator && (
+                {invoiceData.company && (
                   <Container style={{ marginBottom: "20px" }}>
                     <Typography
                       variant="overline"

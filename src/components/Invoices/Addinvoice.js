@@ -27,6 +27,7 @@ import { initialState, toCommas } from "../../initialState.js";
 export function Addinvoice() {
   const history = useHistory();
   const user = localStorage.getItem("Username");
+  const company = JSON.parse(localStorage.getItem("user"));
   const [invoiceData, setInvoiceData] = useState(initialState);
   const [customers, setcustomers] = useState("");
   const [customer, setcustomer] = useState("");
@@ -135,6 +136,7 @@ export function Addinvoice() {
       status: status,
       paymentRecords: [],
       creator: user,
+      company: company,
     };
     fetch(`${API_URL}/invoices/createinvoice`, {
       method: "POST",

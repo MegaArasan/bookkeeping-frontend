@@ -118,7 +118,7 @@ export function Invoices() {
     })
       .then((data) => data.json())
       .then((invoices) => {
-        console.log(invoices);
+        // console.log(invoices);
         setrows(invoices);
         });
   };
