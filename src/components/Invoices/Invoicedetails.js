@@ -21,6 +21,7 @@ import TableRow from "@mui/material/TableRow";
 import moment from "moment";
 import Paper from "@mui/material/Paper";
 import Modal from "./Modal.js";
+import { saveAs } from "file-saver";
 
 export function Invoicedetails() {
   const [invoiceData, setInvoiceData] = useState();
@@ -91,7 +92,7 @@ function InvoiceDetails({
   company,
 }) {
   const [loading, setLoading] = useState(false);
-  // const [downloadStatus, setDownloadStatus] = useState(null);
+  const [downloadStatus, setDownloadStatus] = useState(null);
   const [open, setOpen] = useState(false);
   // eslint-disable-next-line
   const [opened, setopened] = useState(false);
@@ -99,6 +100,7 @@ function InvoiceDetails({
   // const userName = localStorage.getItem("Username");
   const [Msg, setMsg] = useState();
   const history = useHistory();
+  const createdAt = new Date().toISOString().slice(0, 10);
   let totalAmountReceived = 0;
   for (var i = 0; i < invoiceData?.paymentRecords?.length; i++) {
     totalAmountReceived += Number(invoiceData?.paymentRecords[i]?.amountPaid);
@@ -108,38 +110,91 @@ function InvoiceDetails({
     history.push(`/invoice/edit/${id}`);
   };
 
+  const createAndDownloadPdf = () => {
+    setDownloadStatus("loading");
+    const data = {
+      name: invoiceData.customer.customerName,
+      address: invoiceData.customer.address,
+      phone: invoiceData.customer.phoneno,
+      email: invoiceData.customer.email,
+      dueDate: invoiceData.dueDate,
+      date: createdAt,
+      id: invoiceData.invoiceNumber,
+      notes: invoiceData.notes,
+      subTotal: toCommas(invoiceData.subTotal),
+      total: toCommas(invoiceData.total),
+      type: invoiceData.type,
+      vat: invoiceData.vat,
+      items: invoiceData.items,
+      status: invoiceData.status,
+      totalAmountReceived: toCommas(totalAmountReceived),
+      balanceDue: toCommas(total - totalAmountReceived),
+      company: company,
+    };
+    // console.log(data);
+    fetch(`${API_URL}/invoices/createanddownloadpdf`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(() =>
+        fetch(`${API_URL}/invoices/fetch-pdf`, {
+          method: "GET",
+        })
+      )
+      .then((res) => res.blob())
+      .then((myblob) => {
+        const pdfBlob = new Blob([myblob.data], { type: "application/pdf" });
+        saveAs(pdfBlob, "Invoice.pdf");
+      })
+      .then(() => setDownloadStatus("success"))
+      .catch((error) => {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      });
+  };
+
   const sendPdf = (e) => {
     e.preventDefault();
     setLoading(true);
-    //     axios.post(`${process.env.REACT_APP_API}/send-pdf`,
-    //     { name: invoice.client.name,
-    //       address: invoice.client.address,
-    //       phone: invoice.client.phone,
-    //       email: invoice.client.email,
-    //       dueDate: invoice.dueDate,
-    //       date: invoice.createdAt,
-    //       id: invoice.invoiceNumber,
-    //       notes: invoice.notes,
-    //       subTotal: toCommas(invoice.subTotal),
-    //       total: toCommas(invoice.total),
-    //       type: invoice.type,
-    //       vat: invoice.vat,
-    //       items: invoice.items,
-    //       status: invoice.status,
-    //       totalAmountReceived: toCommas(totalAmountReceived),
-    //       balanceDue: toCommas(total - totalAmountReceived),
-    //       link: `${process.env.REACT_APP_URL}/invoice/${invoice._id}`,
-    //   })
-    // .then(() => console.log("invoice sent successfully"))
-    //   .then(() => {
-    //     setLoading(false);
-    //   setOpened(true);
-    //   setMsg("Invoice sent successfully")})
-    //   .catch((error) => {
-    //     console.log(error)
-    // setLoading(false);
-    //   })
+    const data = {
+      name: invoiceData.customer.customerName,
+      address: invoiceData.customer.address,
+      phone: invoiceData.customer.phoneno,
+      email: invoiceData.customer.email,
+      dueDate: invoiceData.dueDate,
+      date: createdAt,
+      id: invoiceData.invoiceNumber,
+      notes: invoiceData.notes,
+      subTotal: toCommas(invoiceData.subTotal),
+      total: toCommas(invoiceData.total),
+      type: invoiceData.type,
+      vat: invoiceData.vat,
+      items: invoiceData.items,
+      status: invoiceData.status,
+      totalAmountReceived: toCommas(totalAmountReceived),
+      balanceDue: toCommas(total - totalAmountReceived),
+      company: company,
+    };
+    fetch(`${API_URL}/invoices/send-pdf`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(() => {
+        console.log("invoice sent successfully");
+        setLoading(false);
+        setopened(true);
+        setMsg("Invoice sent successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   };
+
   function checkStatus() {
     return totalAmountReceived >= total
       ? "green"
@@ -188,8 +243,9 @@ function InvoiceDetails({
           </Button>
           <Button
             sx={{ margin: "2px" }}
-            //   onClick={createAndDownloadPdf}
+            onClick={createAndDownloadPdf}
             variant="contained"
+            state={downloadStatus}
           >
             Download PDF
           </Button>
@@ -265,7 +321,7 @@ function InvoiceDetails({
                   No:{" "}
                 </Typography>
                 <Typography variant="body2">
-                  {invoiceData?.invoiceNumber}
+                  {invoiceData.invoiceNumber}
                 </Typography>
               </Grid>
             </Grid>
@@ -306,10 +362,10 @@ function InvoiceDetails({
                     Bill to
                   </Typography>
                   <Typography variant="subtitle2" gutterBottom>
-                    {customer.name}
+                    {customer.customerName}
                   </Typography>
                   <Typography variant="body2">{customer.email}</Typography>
-                  <Typography variant="body2">{customer.phone}</Typography>
+                  <Typography variant="body2">{customer.phoneno}</Typography>
                   <Typography variant="body2">{customer.address}</Typography>
                 </Container>
               </Grid>
