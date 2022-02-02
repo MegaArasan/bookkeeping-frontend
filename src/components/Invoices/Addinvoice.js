@@ -294,7 +294,7 @@ export function Addinvoice() {
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   {selectedDate
-                    ? moment(selectedDate).format("MMM Do YYYY")
+                    ? moment(selectedDate).toISOString()
                     : "27th Sep 2021"}
                 </Typography>
                 <Typography variant="overline" gutterBottom>
