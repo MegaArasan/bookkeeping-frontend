@@ -207,6 +207,13 @@ function InvoiceDetails({
       ? "red"
       : "red";
   }
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <Box
       sx={{
@@ -543,7 +550,7 @@ function InvoiceDetails({
           </form>
         </div>
       </div>
-      <Snackbar open={opened} autoHideDuration={6000}>
+      <Snackbar onClose={handleClose} open={opened} autoHideDuration={1000}>
         <Alert severity="success" sx={{ width: "100%" }}>
           {Msg}
         </Alert>

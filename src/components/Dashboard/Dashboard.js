@@ -51,9 +51,10 @@ export function Dashboard() {
 
 const useStyles = makeStyles({
   card: {
-    minWidth: "120px",
+    // maxWidth: "250px",
+    witdh: "100%",
     height: "auto",
-    padding: "1rem",
+    padding: "12px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -107,7 +108,7 @@ function DashBoard({ invoices }) {
         },
         ml: { sm: `${drawerWidth}px`, xs: 0 },
         backgroundColor: "#a7e7e5",
-        padding: "10px",
+        padding: "5px",
       }}
     >
       <section className="amountcard">
